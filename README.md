@@ -77,8 +77,32 @@ In Tinfoil, add a shop with the following settings:
  - Username: username as created in Ownfoil settings (if the shop is set to Private)
  - Password: password as created in Ownfoil settings (if the shop is set to Private)
 
+## NPM setup
+
+Create a Proxy Host:
+
+- Domain Names: Your own A domain record
+- Scheme: http
+- Forward Hostname / IP: IP where ownfoil is running
+- Forward Port: HTTP port of ownfoil
+- Block Common Exploits
+- SSL:
+  - Request a new using your prefered method, I recommend DNS Challenge.
+  - Force SSL
+  - HTTP/2 Support
+  - HSTS Enabled
+- Advanced:
+  
+Add this code to the Custom Nginx Configuration
+````nginx
+proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+proxy_set_header Host $http_host;
+proxy_set_header X-Forwarded-Proto $scheme;
+````
+
 # Usage
-Once Ownfoil is running you can access the Shop Web UI by navigating to the `http://<computer/server IP>:8465`.
+Once Ownfoil is running you can access the Shop Web UI by navigating to the `https://<reverse-proxy-ip>:<reverse-proxy-port>`.
 
 ## User administration
 Ownfoil requires an `admin` user to be created to enable Authentication for your Shop. Go to the `Settings` to create a first user that will have admin rights. Then you can add more users to your shop the same way.
