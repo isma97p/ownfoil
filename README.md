@@ -3,6 +3,8 @@
 [![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/a1ex4/ownfoil?sort=date&arch=amd64
 )](https://hub.docker.com/r/a1ex4/ownfoil/tags)
 
+This fork is designed to support the passthrough of the real IP when using a reverse proxy solution like Nginx Proxy Manager (NPM), enhancing logging to facilitate use with an IDS/IPS or SIEM systems.
+
 Ownfoil is a Nintendo Switch library manager, that will also turn your library into a fully customizable and self-hosted Tinfoil Shop. The goal of this project is to manage your library, identify any missing content (DLCs or updates) and provide a user friendly way to browse your content. Some of the features include:
 
  - multi user authentication
